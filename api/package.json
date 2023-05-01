@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app",
+    "make": "knex migrate:make update_mpesa_2",
+    "latest": "knex migrate:latest",
+    "roll": "knex migrate:rollback"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "currency.js": "^2.0.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "facebook-nodejs-business-sdk": "^12.0.1",
+    "flutterwave-node-v3": "^1.0.9",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.14",
+    "luxon": "^2.2.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "nanoid": "^3.1.30",
+    "objection": "^3.0.0",
+    "rotating-file-stream": "^3.0.2",
+    "serve-favicon": "^2.5.0",
+    "sqlite3": "^4.2.0"
+  }
+}

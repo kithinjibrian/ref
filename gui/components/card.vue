@@ -1,0 +1,78 @@
+<template>
+    <v-card
+        elevation="4">
+          <v-card-title>
+            {{title}}
+          </v-card-title>
+          <v-card-text>
+            {{subtitle}}
+          </v-card-text>
+          <v-divider/>
+          <v-card-actions>
+            <v-dialog
+            v-model="dialog">
+                <template #activator = "{on , attrs}">
+                    <v-btn
+                    text
+                    color="red"
+                    v-bind="attrs"
+                    v-on="on">
+                        Details
+                    </v-btn>
+                </template>
+                <v-card>
+                    <v-card-title>
+                        Details
+                    </v-card-title>
+                    <v-card-text>
+                        {{details}}
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer/>
+                        <v-btn
+                        color="red"
+                        text
+                        @click="dialog=false">cancel</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+            <v-spacer/>
+                <NuxtLink :to="link">
+                    <v-btn
+                    v-if="hasLink"
+                    text
+                    color="green">Visit</v-btn>
+                </NuxtLink>
+          </v-card-actions>
+        </v-card>
+</template>
+
+<script>
+export default {
+    props:{
+        hasLink:{
+            type:Boolean,
+            default:false
+        },
+        link:{
+            type:String,
+            default:"/"
+        },
+        title:{
+            type:String,
+            required:true
+        },
+        subtitle:{
+            type:String,
+            required:true
+        },
+        details:{
+            type:String,
+            required:true
+        },
+    },
+    data:()=>({
+        dialog:false
+    })
+}
+</script>

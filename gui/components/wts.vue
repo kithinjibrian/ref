@@ -1,0 +1,82 @@
+<template>
+    <v-dialog
+    v-model="dialog"
+    max-width="350">
+    <template #activator = "{ on ,attrs}">
+        <v-btn
+        :color="clr"
+        class="ma-4"
+        :outlined="outlined"
+        block
+        v-bind="attrs"
+        v-on="on">{{btn}}</v-btn>
+    </template>
+    <v-card>
+        <v-card-title>
+            {{title}}
+        </v-card-title>
+        <v-card-subtitle>
+            {{desc}}<span v-if="html" v-html="html"></span>
+        </v-card-subtitle>
+        <v-card-text>
+            <v-text-field
+            v-model="deposit"
+            label="Amount"
+            outlined
+            dense/>
+        </v-card-text>
+        <v-card-actions>
+            <v-spacer/>
+            <v-btn
+            color="red"
+            text
+            @click="dialog=false">cancel</v-btn>
+            <v-btn
+            color="green"
+            text
+            @click="bubble(deposit)">{{btn}}</v-btn>
+        </v-card-actions>
+    </v-card> 
+    </v-dialog>
+</template>
+
+<script>
+export default {
+    props:{
+        btn:{
+            type:String,
+            required:true
+        },
+        clr:{
+            type:String,
+            default:"success"
+        },
+        title:{
+            type:String,
+            required:true
+        },
+        desc:{
+            type:String,
+            required:true
+        },
+        outlined:{
+            type:Boolean,
+            default:false
+        },
+        html:{
+            type:String,
+            default:null
+        }
+    },
+    data:()=>({
+        dialog:false,
+        deposit:null
+    }),
+    methods:{
+        bubble(e) {
+            this.$emit("clicked",e);
+            this.dialog=false;
+        }
+    }
+}
+</script>
